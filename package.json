@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/Pabl10/bold-react/issues"
   },
-  "homepage": "https://github.com/Pabl10/bold-react#readme",
+  "homepage": "https://pabl10.github.io/bold-react",
   "dependencies": {
     "@tanstack/react-virtual": "^3.13.12",
     "@types/react": "^19.2.2",
