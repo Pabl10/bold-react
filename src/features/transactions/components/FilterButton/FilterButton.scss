@@ -1,0 +1,114 @@
+@import '@/features/shared/styles/mixins';
+
+.filter-button {
+  position: relative;
+  display: inline-block;
+  
+  &__trigger {
+    @include button-base;
+    @include flex-center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-lg;
+    background: $color-white;
+    color: $color-blue;
+    border: 1px solid $color-light-gray;
+    border-radius: $border-radius-lg;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: $color-light-gray;
+      border-color: $color-blue;
+      transform: translateY(-1px);
+    }
+  }
+  
+  &__icon {
+    font-size: $font-size-xs;
+    transition: transform $transition-fast;
+    
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+  
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: $color-white;
+    border: 1px solid $color-light-gray;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    z-index: $z-dropdown;
+    margin-top: $spacing-xs;
+    min-width: 200px;
+    animation: slideInDown $transition-base ease-out;
+    
+    &-content {
+      padding: $spacing-md;
+    }
+  }
+  
+  &__option {
+    @include flex-center;
+    gap: $spacing-sm;
+    padding: $spacing-sm 0;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    border-radius: $border-radius;
+    
+    &:hover {
+      background: $color-light-gray;
+    }
+    
+    &:last-child {
+      border-bottom: 1px solid $color-light-gray;
+      margin-bottom: $spacing-md;
+    }
+  }
+  
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: $color-blue;
+    cursor: pointer;
+  }
+  
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-dark-gray;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  &__apply {
+    @include button-base;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background: $color-red;
+    color: $color-white;
+    border-radius: $border-radius;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: darken($color-red, 10%);
+      transform: translateY(-1px);
+    }
+  }
+  
+  // Responsive
+  @include mobile {
+    &__dropdown {
+      right: auto;
+      left: 0;
+      min-width: 250px;
+    }
+  }
+}

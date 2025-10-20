@@ -1,0 +1,259 @@
+@import '@/features/shared/styles/mixins';
+
+.transactions-table {
+  background: $color-white;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow;
+  
+  // Header fijo
+  &__header-container {
+    background: $color-white;
+    border-bottom: 1px solid $color-light-gray;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  &__header-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1.5fr 1.5fr;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    width: 100%;
+    min-width: 1040px; // asegura ancho mínimo para scroll horizontal
+    background: $color-white;
+  }
+  
+  &__header-cell {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    text-align: left;
+    color: $color-blue;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &--transaction {
+      min-width: 220px;
+    }
+
+    &--date {
+      min-width: 160px;
+    }
+
+    &--payment {
+      min-width: 220px;
+    }
+
+    &--id {
+      min-width: 200px;
+    }
+
+    &--amount {
+      min-width: 140px;
+    }
+  }
+  
+  // Contenedor virtualizado
+  &__virtual-container {
+    @include custom-scrollbar;
+    background: $color-white;
+  }
+  
+  &__row {
+    border-bottom: 1px solid $color-light-gray;
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: rgba($color-blue, 0.05);
+      transform: translateY(-1px);
+      box-shadow: $shadow-sm;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  &__row-content {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1.5fr 1.5fr;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    min-width: 1040px; // igual que header para sincronía de scroll
+  }
+  
+  &__cell {
+    font-size: $font-size-sm;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    &--id {
+      font-family: monospace;
+      font-size: $font-size-xs;
+      color: $color-dark-gray;
+      min-width: 200px;
+    }
+    
+    &--amount {
+      text-align: left;
+      min-width: 140px;
+    }
+
+    &--transaction {
+      min-width: 220px;
+    }
+
+    &--date {
+      min-width: 160px;
+    }
+
+    &--payment {
+      min-width: 220px;
+    }
+  }
+  
+  &__transaction-info {
+    @include flex-start;
+    gap: $spacing-sm;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  &__status {
+    @include flex-start;
+    gap: $spacing-xs;
+    width: 100%;
+    overflow: hidden;
+    
+    &-icon {
+      font-size: $font-size-sm;
+      flex-shrink: 0;
+    }
+    
+    &-text {
+      font-weight: $font-weight-medium;
+      font-size: $font-size-xs;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  
+  &__payment-info {
+    @include flex-start;
+    gap: $spacing-sm;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  &__payment-icon {
+    font-size: $font-size-sm;
+    flex-shrink: 0;
+  }
+  
+  &__payment-details {
+    @include flex-column;
+    gap: $spacing-xs;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  &__payment-method {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-xs;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__franchise {
+    font-size: $font-size-xs;
+    color: $color-dark-gray;
+    font-weight: $font-weight-regular;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__last-digits {
+    font-size: $font-size-xs;
+    color: $color-dark-gray;
+    font-family: monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__amount-info {
+    @include flex-column;
+    gap: $spacing-xs;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  &__amount {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    color: $color-blue;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__deduction-info {
+    @include flex-column;
+    gap: $spacing-xs;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  &__deduction-label {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-xs;
+    color: $color-dark-gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__deduction-value {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-xs;
+    color: $color-red;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  // Estados de carga y vacío
+  &__loading,
+  &__empty {
+    @include flex-center;
+    @include flex-column;
+    gap: $spacing-md;
+    padding: $spacing-3xl;
+    color: $color-dark-gray;
+    font-size: $font-size-sm;
+  }
+  
+  &__spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid $color-light-gray;
+    border-top: 3px solid $color-blue;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+}

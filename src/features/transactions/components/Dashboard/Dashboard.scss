@@ -1,0 +1,106 @@
+@import '@/features/shared/styles/mixins';
+
+.dashboard {
+  min-height: 100vh;
+  background: $color-background;
+  padding: $spacing-xl;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  &__content-header {
+    @include flex-start;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+  
+  &__filters-section {
+    width: 100%;
+    @include flex-end;
+    flex-flow: column;
+    gap: $spacing-md;
+  }
+  
+  &__transactions-section {
+    background: $color-white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    overflow: hidden;
+  }
+  
+  &__transactions-header {
+    @include flex-between;
+    padding: $spacing-lg;
+    background: $gradient-header;
+    color: $color-white;
+  }
+  
+  &__transactions-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-white;
+    margin: 0;
+  }
+  
+  &__error {
+    @include flex-center;
+    @include flex-column;
+    gap: $spacing-lg;
+    padding: $spacing-3xl;
+    text-align: center;
+    background: $color-white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    margin: $spacing-xl;
+    
+    h2 {
+      color: $color-red;
+      margin: 0;
+    }
+    
+    p {
+      color: $color-dark-gray;
+      margin: 0;
+    }
+  }
+  
+  &__retry-button {
+    @include button-primary;
+    padding: $spacing-sm $spacing-lg;
+  }
+  
+  // Responsive
+  @include mobile {
+    padding: $spacing-md;
+    
+    &__transactions-header {
+      flex-direction: column;
+      gap: $spacing-md;
+      align-items: flex-start;
+    }
+    
+    &__search-section,
+    &__table-section {
+      padding: $spacing-md;
+    }
+  }
+  
+  @include tablet {
+    padding: $spacing-lg;
+    
+    &__transactions-header {
+      padding: $spacing-md;
+    }
+    
+    &__search-section,
+    &__table-section {
+      padding: $spacing-md;
+    }
+  }
+}

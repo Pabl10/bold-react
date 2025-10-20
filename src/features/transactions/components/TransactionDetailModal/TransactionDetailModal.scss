@@ -1,0 +1,221 @@
+@import '@/features/shared/styles/mixins';
+
+.transaction-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: $color-white;
+  box-shadow: $shadow-xl;
+  z-index: $z-modal;
+  transform: translateX(100%);
+  transition: transform $transition-base ease-in-out;
+  overflow-y: auto;
+  @include custom-scrollbar;
+  
+  &--open {
+    transform: translateX(0);
+  }
+  
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color-black, 0.5);
+    z-index: $z-modal-backdrop;
+    animation: fadeIn $transition-base ease-out;
+  }
+  
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $color-light-gray;
+    background: $color-white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-blue;
+    margin: 0;
+  }
+  
+  &__close {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    background: $color-light-gray;
+    border: none;
+    border-radius: 50%;
+    color: $color-dark-gray;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: $color-red;
+      color: $color-white;
+      transform: scale(1.1);
+    }
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+  }
+  
+  &__section {
+    margin-bottom: $spacing-xl;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__section-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-blue;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $color-light-gray;
+  }
+  
+  &__field {
+    @include flex-between;
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid rgba($color-light-gray, 0.5);
+    
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  
+  &__label {
+    font-weight: $font-weight-medium;
+    color: $color-dark-gray;
+    font-size: $font-size-sm;
+    min-width: 120px;
+  }
+  
+  &__value {
+    font-size: $font-size-sm;
+    color: $color-blue;
+    font-weight: $font-weight-medium;
+    text-align: right;
+    word-break: break-word;
+    
+    &--id {
+      font-family: monospace;
+      font-size: $font-size-xs;
+      color: $color-dark-gray;
+    }
+  }
+  
+  &__status {
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    &-icon {
+      font-size: $font-size-sm;
+    }
+    
+    &-text {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-blue;
+    }
+  }
+  
+  &__payment {
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    &-icon {
+      font-size: $font-size-base;
+    }
+    
+    &-method {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-blue;
+    }
+  }
+  
+  &__franchise {
+    font-size: $font-size-xs;
+    color: $color-dark-gray;
+    font-weight: $font-weight-regular;
+  }
+  
+  &__sales-type {
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    &-icon {
+      font-size: $font-size-base;
+    }
+    
+    &-text {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-blue;
+    }
+  }
+  
+  &__amount {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-blue;
+  }
+  
+  &__deduction {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-red;
+  }
+  
+  &__net-amount {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-success;
+  }
+  
+  // Responsive
+  @include mobile {
+    width: 100vw;
+    
+    &__header {
+      padding: $spacing-md;
+    }
+    
+    &__content {
+      padding: $spacing-md;
+    }
+    
+    &__field {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-xs;
+    }
+    
+    &__label {
+      min-width: auto;
+    }
+    
+    &__value {
+      text-align: left;
+    }
+  }
+  
+  @include tablet {
+    width: 350px;
+  }
+}

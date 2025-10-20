@@ -1,0 +1,315 @@
+// Importar variables y mixins
+@import 'variables';
+@import 'mixins';
+@import 'animations';
+
+// Reset CSS y estilos base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $color-dark-gray;
+  background-color: $color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Estilos para elementos de texto
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-semibold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: $color-blue;
+}
+
+h1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+}
+
+h2 {
+  font-size: $font-size-2xl;
+}
+
+h3 {
+  font-size: $font-size-xl;
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+h5 {
+  font-size: $font-size-base;
+}
+
+h6 {
+  font-size: $font-size-sm;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+// Enlaces
+a {
+  color: $color-blue;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-red;
+  }
+}
+
+// Listas
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Imágenes
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Botones base
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  
+  &:focus {
+    outline: 2px solid $color-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Inputs base
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  
+  &:focus {
+    outline: 2px solid $color-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Tablas
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-md;
+}
+
+th, td {
+  padding: $spacing-sm;
+  text-align: left;
+  border-bottom: 1px solid $color-light-gray;
+}
+
+th {
+  font-weight: $font-weight-semibold;
+  background-color: $color-light-gray;
+}
+
+// Utilidades
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.text-blue {
+  color: $color-blue;
+}
+
+.text-red {
+  color: $color-red;
+}
+
+.text-gray {
+  color: $color-dark-gray;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.bg-blue {
+  background-color: $color-blue;
+}
+
+.bg-red {
+  background-color: $color-red;
+}
+
+.bg-white {
+  background-color: $color-white;
+}
+
+.bg-gray {
+  background-color: $color-light-gray;
+}
+
+// Flexbox utilities
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+// Spacing utilities
+.p-0 { padding: 0; }
+.p-1 { padding: $spacing-xs; }
+.p-2 { padding: $spacing-sm; }
+.p-3 { padding: $spacing-md; }
+.p-4 { padding: $spacing-lg; }
+.p-5 { padding: $spacing-xl; }
+
+.m-0 { margin: 0; }
+.m-1 { margin: $spacing-xs; }
+.m-2 { margin: $spacing-sm; }
+.m-3 { margin: $spacing-md; }
+.m-4 { margin: $spacing-lg; }
+.m-5 { margin: $spacing-xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-xs; }
+.mt-2 { margin-top: $spacing-sm; }
+.mt-3 { margin-top: $spacing-md; }
+.mt-4 { margin-top: $spacing-lg; }
+.mt-5 { margin-top: $spacing-xl; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: $spacing-xs; }
+.ml-2 { margin-left: $spacing-sm; }
+.ml-3 { margin-left: $spacing-md; }
+.ml-4 { margin-left: $spacing-lg; }
+.ml-5 { margin-left: $spacing-xl; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: $spacing-xs; }
+.mr-2 { margin-right: $spacing-sm; }
+.mr-3 { margin-right: $spacing-md; }
+.mr-4 { margin-right: $spacing-lg; }
+.mr-5 { margin-right: $spacing-xl; }
+
+// Responsive utilities
+@include mobile {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-block {
+    display: block !important;
+  }
+  
+  .mobile-flex {
+    display: flex !important;
+  }
+}
+
+@include tablet {
+  .tablet-hidden {
+    display: none !important;
+  }
+  
+  .tablet-block {
+    display: block !important;
+  }
+  
+  .tablet-flex {
+    display: flex !important;
+  }
+}
+
+@include desktop {
+  .desktop-hidden {
+    display: none !important;
+  }
+  
+  .desktop-block {
+    display: block !important;
+  }
+  
+  .desktop-flex {
+    display: flex !important;
+  }
+}

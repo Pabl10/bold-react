@@ -1,0 +1,10 @@
+@import '@/features/shared/styles/mixins';
+
+.app {
+  min-height: 100vh;
+  background: $color-background;
+  
+  &__main {
+    padding-top: 0;
+  }
+}

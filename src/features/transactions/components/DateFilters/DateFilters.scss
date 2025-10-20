@@ -1,0 +1,59 @@
+@import '@/features/shared/styles/mixins';
+
+.date-filters {
+  @include flex-center;
+  width: 100%;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  background: $color-white;
+  box-shadow: $shadow;
+  border-radius: $border-radius-lg;
+  
+  &__button {
+    @include button-base;
+    padding: $spacing-sm $spacing-lg;
+    background: $color-white;
+    color: $color-dark-gray;
+    border: 1px solid $color-light-gray;
+    border-radius: $border-radius-full;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+    transition: all $transition-fast;
+    cursor: pointer;
+    width: 100%;
+    
+    &:hover {
+      background: $color-light-gray;
+      color: $color-blue;
+      transform: translateY(-1px);
+    }
+
+    &:focus, &:focus-visible {
+      outline: none;
+      border: 0px;
+    }
+    
+    &--active {
+      background: $color-light-gray;
+      color: $color-blue;
+      font-weight: $font-weight-semibold;
+      
+      &:hover {
+        background: $color-light-gray;
+        transform: none;
+      }
+    }
+  }
+  
+  // Responsive
+  @include mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    &__button {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+    }
+  }
+}
