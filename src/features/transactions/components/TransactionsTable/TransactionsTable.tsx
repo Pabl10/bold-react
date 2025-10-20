@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { PaymentMethod, Transaction, TransactionStatus } from '@/features/transactions/types/transaction.types';
 import { 
