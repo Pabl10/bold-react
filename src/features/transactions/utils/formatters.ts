@@ -8,17 +8,17 @@ const MONTH_NAMES = [
 
 /**
  * Formatea un número como moneda colombiana
- * @param amount Monto en centavos
+ * @param amount Monto en pesos
  * @returns String formateado como moneda colombiana
  */
 export const formatCurrency = (amount: number): string => {
-  const pesos = amount / 100; // Convertir centavos a pesos
+  // El valor ya viene en pesos desde la API, no necesita división
   return new Intl.NumberFormat('es-CO', {
     style: 'currency',
     currency: 'COP',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(pesos);
+  }).format(amount);
 };
 
 /**
